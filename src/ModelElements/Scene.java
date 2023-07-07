@@ -18,4 +18,10 @@ public class Scene {
     public Type method2(Type type1, Type type2) {
         return type1;
     }
+
+    public Scene(int id, List<PoligonalModel> models, List<Flash> flashes) {
+        this.id = id;
+        this.models = models;
+        this.flashes = flashes;
+    }
 }
