@@ -1,6 +1,6 @@
-package ModelElements;
+package Homeworks.HW1.ModelElements;
 
-import Stuff.Point3D;
+import Homeworks.HW1.Stuff.Point3D;
 
 import java.util.ArrayList;
 import java.util.List;

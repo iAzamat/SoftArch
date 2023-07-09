@@ -1,6 +1,6 @@
-package InMemoryModel;
+package Homeworks.HW1.InMemoryModel;
 
-import ModelElements.*;
+import Homeworks.HW1.ModelElements.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,28 +13,45 @@ public class ModelStore implements IModelChanger {
 
     private List<IModelChangedObserver> changeObservers;
 
-    public ModelStore(List<IModelChangedObserver> changedObservers) {
+    /**
+     * конструктор
+     *
+     * @param changedObservers
+     */
+    public ModelStore(List<IModelChangedObserver> changedObservers) throws Exception {
         this.changeObservers = changedObservers;
+
         this.models = new ArrayList<>();
         this.scenes = new ArrayList<>();
         this.flashes = new ArrayList<>();
         this.cameras = new ArrayList<>();
+
+        models.add(new PoligonalModel(null));
+        flashes.add(new Flash());
+        cameras.add(new Camera());
+        scenes.add(new Scene(0, models, flashes, cameras));
     }
 
-    public Scene getScena(int scena) {
-        return getScena(scena);
+    /**
+     * Возвращает сцену по id
+     * @param id
+     * @return
+     */
+    public Scene getScena(int id) {
+        for (Scene scene : scenes) {
+            if (scene.id == id) {
+                return scene;
+            }
+        }
+        return null;
     }
 
+    /**
+     * Регистрация изменений
+     * @param sender
+     */
     @Override
     public void notifyChange(IModelChanger sender) {
 
-    }
-
-    public List<IModelChangedObserver> getChangeObservers() {
-        return changeObservers;
-    }
-
-    public void setChangeObservers(List<IModelChangedObserver> changeObservers) {
-        this.changeObservers = changeObservers;
     }
 }
